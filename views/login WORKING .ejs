@@ -1,0 +1,12 @@
+<%- include('partials/header'); %> 
+<% if (locals.errors && locals.errors.login) { %>
+	<% locals.errors.login.forEach(function(error) { %>
+		<p class="alert alert-primary" role="alert"><%= error %></p>
+	<% }) %>
+<% } %>
+<form action="/login" method="post"> 
+	<input type="email" name="email" placeholder="Email">
+	<input type="password" name="password" placeholder="Password">
+	<button type="submit">Login</button>
+</form>
+<%- include('partials/footer'); %>

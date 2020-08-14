@@ -1,11 +1,37 @@
 <%- include('partials/header'); %> 
-<form action="/account" method="post" enctype="multipart/form-data">
-  <input type="text" name="displayName" placeholder="Display Name" value="<%= locals.user.displayName %>">
-  <input type="email" name="email" placeholder="Email" value="<%= locals.user.email %>">
-  <input type="file" name="avatar">
-	<button type="submit">Update</button>
-	<input type="password" name="password" placeholder="Password" value="<%= locals.user.password %>">
-	<input type="password" name="passwordConfirm" placeholder="Confirm Password" value="<%= locals.user.passwordConfirm %>">
-	<button type="submit">Update Password</button>
+<% if (locals.errors && locals.errors.account) { %>
+	<% locals.errors.account.forEach(function(error) { %>
+		<p class="alert alert-primary" role="alert"><%= error %></p>
+	<% }) %>
+<% } %>
+<form class="my-4 container" form action="/account" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+  <label for="exampleInputEmail1">Display Name</label>
+  <input type="text" name="displayName" placeholder="Display Name" value="<%= locals.user.displayName %>" class="form-control">
+ </div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword">
+    </div>
+  </div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
+</div>
+<div class="form-group">
+	<label for="exampleInputPassword2">Confirm Password</label>
+	<input type="password" name="passwordConfirm" placeholder="Confirm Password" class="form-control" id="exampleInputPassword2">
+  </div>
+<div>
+	<label id="register" class="text">Already have an account? log in<a href="/login"><i class="text"></i>here.</a></label> 
+</div>
+<button type="submit" class="btn btn-primary">Register</button>
 </form>
 <%- include('partials/footer'); %>
