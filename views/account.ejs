@@ -5,33 +5,29 @@
 	<% }) %>
 <% } %>
 <form class="my-4 container" form action="/account" method="post" enctype="multipart/form-data">
-	<div class="form-group">
+  <div class="form-group">
   <label for="exampleInputEmail1">Display Name</label>
-  <input type="text" name="displayName" placeholder="Display Name" value="<%= locals.user.displayName %>" class="form-control">
- </div>
-<div class="form-group row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-    </div>
+  <input type="text" name="displayName" class="form-control" placeholder="Display Name" value="<%= locals.user.displayName %>">
   </div>
-  <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword">
-    </div>
-  </div>
-<div class="form-group">
-  <label for="exampleInputPassword1">Password</label>
-  <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
+  <div>
+    <label for="exampleInputEmail1">Email</label>
+  <input type="email" name="email" class="form-control" placeholder="Email" value="<%= locals.user.email %>">
 </div>
-<div class="form-group">
-	<label for="exampleInputPassword2">Confirm Password</label>
-	<input type="password" name="passwordConfirm" placeholder="Confirm Password" class="form-control" id="exampleInputPassword2">
-  </div>
 <div>
-	<label id="register" class="text">Already have an account? log in<a href="/login"><i class="text"></i>here.</a></label> 
+  <input type="file" name="avatar" >
+  <button type="submit" class="btn btn-primary">Update</button>
 </div>
-<button type="submit" class="btn btn-primary">Register</button>
+  <form action="/password" method="post">
+    <div class="form-group" style="margin-top: 25px;">
+  <label for="exampleInputEmail1">Password</label>
+  <input type="password" class="form-control" name="password" placeholder="Password" value="<%= locals.user.password %>">
+</div>
+<div>
+  <label for="exampleInputEmail1">Confirm Password</label>
+  <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password" value="<%= locals.user.passwordConfirm %>">
+</div>
+<div>
+  <button type="submit" class="btn btn-primary">Update Password</button>
+</div>
 </form>
 <%- include('partials/footer'); %>
