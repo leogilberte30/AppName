@@ -1,4 +1,9 @@
 <%- include('partials/header'); %>
+<% if (locals.errors && locals.errors.channels.general) { %>
+	<% locals.errors.channels.general.forEach(function(error) { %>
+		  <p class="alert alert-primary" role="alert"><%= error %></p>
+	  <% }) %>
+  <% } %>
 <% 
 var channels = locals.channels
 var owned = ("owned" in  channels) ? channels.owned : false
@@ -45,6 +50,6 @@ var subscribed = ("subscribed" in  channels) ? channels.subscribed : false
 			<p><%= user.name %></p>
 		<% }) %>
 	<% } %>
-	<button type="submit" button id="update" class="btn btn-primary">Create</button>
+	<button type="update" button id="update" class="btn btn-primary">Create</button>
 </form>
 <%- include('partials/footer'); %>
