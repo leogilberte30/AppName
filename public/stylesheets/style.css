@@ -22,3 +22,7 @@ a i {
   font-weight: bold;
   text-shadow: 0px 10px 10px rgba(119, 119, 119, 0.66);
 }
+
+pre {
+  color: #ddd;
+}
