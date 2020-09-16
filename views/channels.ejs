@@ -10,7 +10,10 @@ var owned = ("owned" in  channels) ? channels.owned : false
 var subscribed = ("subscribed" in  channels) ? channels.subscribed : false
 %> 
 <% var users = locals.channels.users %>
-<form class="my-4 container" div id="owned-channels" class="user-channels">
+<div class="my-4 container">
+
+
+<div id="owned-channels" class="user-channels">
 	<h4>Your Channels</h4>
 <% if (owned) { %>
 	<ul>
@@ -39,17 +42,14 @@ var subscribed = ("subscribed" in  channels) ? channels.subscribed : false
 </div>
 <form id="channel-create-form" action="/channels/add" method="post" enctype="multipart/form-data">
 	<input type="text" class="form-control" name="name" placeholder="Display Name" value="">
-	<input type="file" class="custom-file-input" name="avatar" id="avatar-upload">
-</div>
-<div class="div">
-	<h4><label for="users">Users</label></div></h4>
-</div>
+	<input type="file" class="file-input" name="avatar" id="avatar-upload">
 	<% if (users) { %>
 		<% users.forEach(function(user) { %>
 			<input class="user-check-input" id="user<%= user.id %>" type="checkbox" name="users" value="<%= user.id %>">
 			<p><%= user.name %></p>
 		<% }) %>
 	<% } %>
-	<button type="update" class="btn btn-primary">Create</button>
+	<button id="update" type="submit">Create</button>
 </form>
+</div>
 <%- include('partials/footer'); %>
